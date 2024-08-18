@@ -7,13 +7,17 @@ using namespace std;
 int main() {
     TMS tms;
 
-    Task task1("Finish Assignment", "Complete the math assignment", "2024-08-20");
-    Task task2("Buy Groceries", "Buy vegetables and fruits", "2024-08-17");
-    Task task3("Workout", "Do 30 minutes of exercise", "2024-08-18");
+    // Creating an array of Task objects
+    Task taskArray[3] = {
+        Task("Finish Assignment", "Complete the math assignment", "2024-08-20"),
+        Task("Buy Groceries", "Buy vegetables and fruits", "2024-08-17"),
+        Task("Workout", "Do 30 minutes of exercise", "2024-08-18")
+    };
 
-    tms.addTask(task1);
-    tms.addTask(task2);
-    tms.addTask(task3);
+    // Adding tasks from the array to the TMS system
+    for (int i = 0; i < 3; ++i) {
+        tms.addTask(taskArray[i]);
+    }
 
     cout << "Tasks before sorting:" << endl;
     tms.viewTasks();
