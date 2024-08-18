@@ -15,6 +15,7 @@ void TMS::viewTasks() const {
     }
 }
 
+
 void TMS::sortTasksByDeadline() {
     sort(this->tasks.begin(), this->tasks.end(), [](const Task& a, const Task& b) {  
         return a.getDeadline() < b.getDeadline();
