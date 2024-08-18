@@ -5,7 +5,7 @@ using namespace std;
 
 Task::Task(string t, string d, string dl)
     : title(t), description(d), deadline(dl), isCompleted(false) {
-    // Using `this` pointer to refer to the current object's members
+   
     this->title = t;
     this->description = d;
     this->deadline = dl;
@@ -13,7 +13,7 @@ Task::Task(string t, string d, string dl)
 }
 
 void Task::completeTask() {
-    this->isCompleted = true;  // Using `this` pointer to modify the current object's member
+    this->isCompleted = true;  
 }
 
 void Task::displayTask() const {
@@ -23,9 +23,9 @@ void Task::displayTask() const {
 }
 
 string Task::getTitle() const {
-    return this->title;  // Using `this` pointer to return the current object's member
+    return this->title;  
 }
 
 string Task::getDeadline() const {
-    return this->deadline;  // Using `this` pointer to return the current object's member
+    return this->deadline;  
 }
