@@ -11,11 +11,17 @@ private:
     string deadline;
     bool isCompleted;
 
+    static int totalTasks;      
+    static int completedTasks;  
+
 public:
     Task(string t, string d, string dl);
 
     void completeTask();
     void displayTask() const;
+
+    static int getTotalTasks();      
+    static int getCompletedTasks();  
 
     string getTitle() const;
     string getDeadline() const;

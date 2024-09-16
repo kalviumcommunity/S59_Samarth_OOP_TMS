@@ -5,24 +5,24 @@
 using namespace std;
 
 void TMS::addTask(const Task& task) {
-    this->tasks.push_back(task);   
+    tasks.push_back(task);   
 }
 
 void TMS::viewTasks() const {
-    for (const auto& task : this->tasks) {  
+    for (const auto& task : tasks) {  
         task.displayTask();
         cout << "----------------------" << endl;
     }
 }
 
 void TMS::sortTasksByDeadline() {
-    sort(this->tasks.begin(), this->tasks.end(), [](const Task& a, const Task& b) {  
+    sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b) {  
         return a.getDeadline() < b.getDeadline();
     });
 }
 
 void TMS::completeTaskByTitle(const string& title) {
-    for (auto& task : this->tasks) {    
+    for (auto& task : tasks) {    
         if (task.getTitle() == title) {
             task.completeTask();
             cout << "Task \"" << title << "\" marked as completed." << endl;
