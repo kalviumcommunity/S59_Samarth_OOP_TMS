@@ -3,19 +3,18 @@
 
 using namespace std;
 
-// Initialize static variables
 int Task::totalTasks = 0;
 int Task::completedTasks = 0;
 
 Task::Task(string t, string d, string dl)
     : title(t), description(d), deadline(dl), isCompleted(false) {
-    totalTasks++;  
+    totalTasks++;
 }
 
 void Task::completeTask() {
     if (!isCompleted) {
         isCompleted = true;
-        completedTasks++;  
+        completedTasks++;
     }
 }
 
@@ -34,9 +33,14 @@ string Task::getDeadline() const {
 }
 
 int Task::getTotalTasks() {
-    return totalTasks;  
+    return totalTasks;
 }
 
 int Task::getCompletedTasks() {
-    return completedTasks;  
+    return completedTasks;
+}
+
+void Task::getTaskStats() {
+    cout << "Total tasks: " << totalTasks << endl;
+    cout << "Completed tasks: " << completedTasks << endl;
 }

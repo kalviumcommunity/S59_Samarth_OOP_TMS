@@ -11,8 +11,8 @@ private:
     string deadline;
     bool isCompleted;
 
-    static int totalTasks;      
-    static int completedTasks;  
+    static int totalTasks;
+    static int completedTasks;
 
 public:
     Task(string t, string d, string dl);
@@ -20,8 +20,9 @@ public:
     void completeTask();
     void displayTask() const;
 
-    static int getTotalTasks();      
-    static int getCompletedTasks();  
+    static int getTotalTasks();
+    static int getCompletedTasks();
+    static void getTaskStats();
 
     string getTitle() const;
     string getDeadline() const;
