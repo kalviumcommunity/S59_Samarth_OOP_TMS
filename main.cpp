@@ -17,19 +17,19 @@ int main() {
 
     cout << "Tasks before sorting:" << endl;
     tms->viewTasks();
-    cout << "Total tasks created: " << Task::getTotalTasks() << endl;
+    Task::getTaskStats();
 
     tms->sortTasksByDeadline();
 
-    cout << "Tasks after sorting by deadline:" << endl;
+    cout << "\nTasks after sorting by deadline:" << endl;
     tms->viewTasks();
-    
+    Task::getTaskStats();
+
     tms->completeTaskByTitle("Workout");
 
-    cout << "Tasks after completing 'Workout':" << endl;
+    cout << "\nTasks after completing 'Workout':" << endl;
     tms->viewTasks();
-
-    cout << "Total tasks completed: " << Task::getCompletedTasks() << endl;
+    Task::getTaskStats();
 
     delete task1;
     delete task2;
