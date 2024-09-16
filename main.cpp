@@ -5,32 +5,37 @@
 using namespace std;
 
 int main() {
-    TMS tms;
+     TMS* tms = new TMS();
 
-    // Creating an array of Task objects
-    Task taskArray[3] = {
-        Task("Finish Assignment", "Complete the math assignment", "2024-08-20"),
-        Task("Buy Groceries", "Buy vegetables and fruits", "2024-08-17"),
-        Task("Workout", "Do 30 minutes of exercise", "2024-08-18")
-    };
+    
+    Task* task1 = new Task("Finish Assignment", "Complete the math assignment", "2024-08-20");
+    Task* task2 = new Task("Buy Groceries", "Buy vegetables and fruits", "2024-08-17");
+    Task* task3 = new Task("Workout", "Do 30 minutes of exercise", "2024-08-18");
 
-    // Adding tasks from the array to the TMS system
-    for (int i = 0; i < 3; ++i) {
-        tms.addTask(taskArray[i]);
-    }
+   
+    tms->addTask(*task1);
+    tms->addTask(*task2);
+    tms->addTask(*task3);
+
 
     cout << "Tasks before sorting:" << endl;
-    tms.viewTasks();
+    tms->viewTasks();
 
-    tms.sortTasksByDeadline();
+  
+    tms->sortTasksByDeadline();
 
     cout << "\nTasks after sorting by deadline:" << endl;
-    tms.viewTasks();
+    tms->viewTasks();
 
-    tms.completeTaskByTitle("Workout");
+    tms->completeTaskByTitle("Workout");
 
     cout << "\nTasks after completing 'Workout':" << endl;
-    tms.viewTasks();
+    tms->viewTasks();
+
+    delete task1;
+    delete task2;
+    delete task3;
+    delete tms;
 
     return 0;
 }
