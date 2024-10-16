@@ -21,15 +21,23 @@ int main() {
 
     tms->sortTasksByDeadline();
 
-    cout << "\nTasks after sorting by deadline:" << endl;
+    cout << "Tasks after sorting by deadline:" << endl;
     tms->viewTasks();
     Task::getTaskStats();
 
     tms->completeTaskByTitle("Workout");
 
-    cout << "\nTasks after completing 'Workout':" << endl;
+    cout << "Tasks after completing 'Workout':" << endl;
     tms->viewTasks();
     Task::getTaskStats();
+
+    
+    task1->setTitle("Complete Math Assignment");
+    task1->setDescription("Finish the math homework and submit it online");
+    task1->setDeadline("2024-08-19");
+
+    cout << "Tasks after updating the title, description, and deadline of task1:" << endl;
+    tms->viewTasks();
 
     delete task1;
     delete task2;

@@ -19,8 +19,8 @@ void Task::completeTask() {
 }
 
 void Task::displayTask() const {
-    cout << "Title: " << title << "\nDescription: " << description
-         << "\nDeadline: " << deadline << "\nStatus: " 
+    cout << "Title: " << title << "Description: " << description
+         << "Deadline: " << deadline << "Status: " 
          << (isCompleted ? "Completed" : "Incomplete") << endl;
 }
 
@@ -30,6 +30,18 @@ string Task::getTitle() const {
 
 string Task::getDeadline() const {
     return deadline;
+}
+
+void Task::setTitle(const string& newTitle) {
+    title = newTitle;
+}
+
+void Task::setDescription(const string& newDescription) {
+    description = newDescription;
+}
+
+void Task::setDeadline(const string& newDeadline) {
+    deadline = newDeadline;
 }
 
 int Task::getTotalTasks() {
