@@ -13,7 +13,7 @@ Task::Task(string t, string d, string dl)
 
 void Task::completeTask() {
     if (!isCompleted) {
-        isCompleted = true;
+        isCompleted = true; 
         completedTasks++;
     }
 }
