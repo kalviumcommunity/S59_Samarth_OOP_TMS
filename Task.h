@@ -2,6 +2,7 @@
 #define TASK_H
 
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Task {
@@ -15,7 +16,14 @@ private:
     static int completedTasks;
 
 public:
+    // Default Constructor
+    Task();
+
+    // Parameterized Constructor
     Task(string t, string d, string dl);
+
+    // Destructor
+    ~Task();
 
     void completeTask();
     void displayTask() const;
