@@ -1,7 +1,6 @@
 #include "TMS.h"
 #include "Task.h"
 #include <iostream>
-
 using namespace std;
 
 int main() {
@@ -31,7 +30,6 @@ int main() {
     tms->viewTasks();
     Task::getTaskStats();
 
-    
     task1->setTitle("Complete Math Assignment");
     task1->setDescription("Finish the math homework and submit it online");
     task1->setDeadline("2024-08-19");
