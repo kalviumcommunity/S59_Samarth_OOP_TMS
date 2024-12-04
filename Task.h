@@ -20,16 +20,13 @@ public:
     void completeTask();
     void displayTask() const;
 
-    
     string getTitle() const;
     string getDeadline() const;
 
-    
     void setTitle(const string& newTitle);
     void setDescription(const string& newDescription);
     void setDeadline(const string& newDeadline);
 
-    
     static int getTotalTasks();
     static int getCompletedTasks();
     static void getTaskStats();

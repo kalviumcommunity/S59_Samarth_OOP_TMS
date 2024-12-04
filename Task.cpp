@@ -1,6 +1,5 @@
 #include "Task.h"
 #include <iostream>
-
 using namespace std;
 
 int Task::totalTasks = 0;
@@ -19,9 +18,9 @@ void Task::completeTask() {
 }
 
 void Task::displayTask() const {
-    cout << "Title: " << title << "Description: " << description
-         << "Deadline: " << deadline << "Status: " 
-         << (isCompleted ? "Completed" : "Incomplete") << endl;
+    cout << "Title: " << title << "\nDescription: " << description
+         << "\nDeadline: " << deadline
+         << "\nStatus: " << (isCompleted ? "Completed" : "Incomplete") << endl;
 }
 
 string Task::getTitle() const {
