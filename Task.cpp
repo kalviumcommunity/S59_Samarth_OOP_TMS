@@ -1,13 +1,22 @@
 #include "Task.h"
-#include <iostream>
-using namespace std;
 
 int Task::totalTasks = 0;
 int Task::completedTasks = 0;
 
+// Default Constructor
+Task::Task() : title(""), description(""), deadline(""), isCompleted(false) {
+    totalTasks++;
+}
+
+// Parameterized Constructor
 Task::Task(string t, string d, string dl)
     : title(t), description(d), deadline(dl), isCompleted(false) {
     totalTasks++;
+}
+
+// Destructor
+Task::~Task() {
+    cout << "Destructor called for task: " << title << endl;
 }
 
 void Task::completeTask() {
@@ -19,8 +28,8 @@ void Task::completeTask() {
 
 void Task::displayTask() const {
     cout << "Title: " << title << "\nDescription: " << description
-         << "\nDeadline: " << deadline
-         << "\nStatus: " << (isCompleted ? "Completed" : "Incomplete") << endl;
+         << "\nDeadline: " << deadline << "\nStatus: " 
+         << (isCompleted ? "Completed" : "Incomplete") << endl;
 }
 
 string Task::getTitle() const {
