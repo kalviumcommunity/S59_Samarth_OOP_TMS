@@ -7,11 +7,10 @@ using namespace std;
 
 class TMS {
 private:
-    vector<Task*> tasks;
+    vector<BaseTask*> tasks;
 
 public:
-    void addTask(Task* task);                     // Single task
-    void addTask(vector<Task*> taskList);         // Multiple tasks (Overloaded)
+    void addTask(BaseTask* task);                // Accepts BaseTask pointer
     void viewTasks() const;
     void sortTasksByDeadline();
     void completeTaskByTitle(const string& title);

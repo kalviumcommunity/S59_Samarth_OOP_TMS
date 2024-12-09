@@ -9,8 +9,9 @@ public:
     CategorizedTask(string t, string d, string dl, string cat)
         : Task(t, d, dl), Category(cat) {}
 
-    void displayTask() const override {
-        Task::displayTask();
+    // Override displayTaskDetails() to show category
+    void displayTaskDetails() const override {
+        Task::displayTaskDetails();
         cout << "Category: " << categoryName << endl;
     }
 };

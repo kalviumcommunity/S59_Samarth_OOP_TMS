@@ -15,8 +15,9 @@ public:
     void setPriorityLevel(int level) { priorityLevel = level; }
     int getPriorityLevel() const { return priorityLevel; }
 
-    void displayTask() const override {
-        Task::displayTask();
+    
+    void displayTaskDetails() const override {
+        Task::displayTaskDetails();
         cout << "Priority: " << (priorityLevel == 1 ? "High" : 
                                   priorityLevel == 2 ? "Medium" : "Low") << endl;
     }
