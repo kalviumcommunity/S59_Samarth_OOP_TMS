@@ -1,11 +1,11 @@
 #ifndef TASK_H
 #define TASK_H
 
+#include "BaseTask.h"
 #include <string>
-#include <iostream>
 using namespace std;
 
-class Task {
+class Task : public BaseTask {
 private:
     string title;
     string description;
@@ -25,15 +25,11 @@ public:
     // Destructor
     virtual ~Task();
 
-    virtual void completeTask();
-    virtual void displayTask() const;
-
-    string getTitle() const;
-    string getDeadline() const;
-
-    void setTitle(const string& newTitle);
-    void setDescription(const string& newDescription);
-    void setDeadline(const string& newDeadline);
+    // Override pure virtual function from BaseTask
+    void displayTaskDetails() const override;
+    void completeTask() override;
+    string getTitle() const override;
+    string getDeadline() const override;
 
     static int getTotalTasks();
     static int getCompletedTasks();
