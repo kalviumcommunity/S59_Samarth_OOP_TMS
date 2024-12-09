@@ -28,7 +28,7 @@ void Task::completeTask() {
 
 void Task::displayTask() const {
     cout << "Title: " << title << "\nDescription: " << description
-         << "\nDeadline: " << deadline << "\nStatus: " 
+         << "\nDeadline: " << deadline << "\nStatus: "
          << (isCompleted ? "Completed" : "Incomplete") << endl;
 }
 
