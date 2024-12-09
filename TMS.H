@@ -10,7 +10,8 @@ private:
     vector<Task*> tasks;
 
 public:
-    void addTask(Task* task);
+    void addTask(Task* task);                     // Single task
+    void addTask(vector<Task*> taskList);         // Multiple tasks (Overloaded)
     void viewTasks() const;
     void sortTasksByDeadline();
     void completeTaskByTitle(const string& title);
