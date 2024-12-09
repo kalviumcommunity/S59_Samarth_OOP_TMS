@@ -7,13 +7,14 @@ using namespace std;
 
 class TMS {
 private:
-    vector<Task> tasks;
+    vector<Task*> tasks;
 
 public:
-    void addTask(const Task& task);
+    void addTask(Task* task);
     void viewTasks() const;
     void sortTasksByDeadline();
     void completeTaskByTitle(const string& title);
+    ~TMS();
 };
 
 #endif

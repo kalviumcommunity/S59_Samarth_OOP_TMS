@@ -23,10 +23,10 @@ public:
     Task(string t, string d, string dl);
 
     // Destructor
-    ~Task();
+    virtual ~Task();
 
-    void completeTask();
-    void displayTask() const;
+    virtual void completeTask();
+    virtual void displayTask() const;
 
     string getTitle() const;
     string getDeadline() const;
