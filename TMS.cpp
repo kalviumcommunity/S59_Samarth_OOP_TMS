@@ -8,6 +8,12 @@ void TMS::addTask(Task* task) {
     tasks.push_back(task);
 }
 
+void TMS::addTask(vector<Task*> taskList) {
+    for (auto& task : taskList) {
+        tasks.push_back(task);
+    }
+}
+
 void TMS::viewTasks() const {
     for (const auto& task : tasks) {
         task->displayTask();
