@@ -1,37 +1,23 @@
-#include "TMS.h"
 #include "PriorityTask.h"
-#include "CategorizedTask.h"
-#include <iostream>
-
-using namespace std;
 
 int main() {
-    TMS* tms = new TMS();
+    // Default Priority Task
+    PriorityTask pt1;
+    pt1.setTitle("Finish Assignment");
+    pt1.setDescription("Complete the math assignment");
+    pt1.setDeadline("2024-08-20");
+    pt1.setPriorityLevel(1);
+    pt1.displayTaskDetails();
 
-    // Creating individual tasks
-    BaseTask* task1 = new PriorityTask("Finish Assignment", "Complete the math assignment", "2024-08-20", 1);
-    BaseTask* task2 = new CategorizedTask("Buy Groceries", "Buy vegetables and fruits", "2024-08-17", "Shopping");
-    BaseTask* task3 = new Task("Workout", "Do 30 minutes of exercise", "2024-08-18");
+    cout << "----------------------" << endl;
 
-    // Adding tasks
-    tms->addTask(task1);
-    tms->addTask(task2);
-    tms->addTask(task3);
+    PriorityTask pt2("Buy Groceries", "Buy vegetables and fruits", "2024-08-17", 2);
+    pt2.displayTaskDetails();
 
-    // Display tasks
-    cout << "Tasks before sorting:" << endl;
-    tms->viewTasks();
+    cout << "----------------------" << endl;
 
-    // Sort tasks and display
-    tms->sortTasksByDeadline();
-    cout << "Tasks after sorting by deadline:" << endl;
-    tms->viewTasks();
+    PriorityTask pt3("Workout", "Do 30 minutes of exercise", "2024-08-18", 5); // Invalid priority
+    pt3.displayTaskDetails();
 
-    // Complete a task and display updated list
-    tms->completeTaskByTitle("Workout");
-    cout << "Tasks after completing 'Workout':" << endl;
-    tms->viewTasks();
-
-    delete tms;
     return 0;
 }

@@ -1,39 +1,47 @@
 #ifndef TASK_H
 #define TASK_H
 
-#include "BaseTask.h"
+#include <iostream>
 #include <string>
 using namespace std;
 
-class Task : public BaseTask {
-private:
+class Task {
+protected:
     string title;
     string description;
     string deadline;
     bool isCompleted;
 
-    static int totalTasks;
-    static int completedTasks;
-
 public:
     // Default Constructor
-    Task();
+    Task() : title(""), description(""), deadline(""), isCompleted(false) {}
 
     // Parameterized Constructor
-    Task(string t, string d, string dl);
+    Task(const string& t, const string& d, const string& dl)
+        : title(t), description(d), deadline(dl), isCompleted(false) {}
 
-    // Destructor
-    virtual ~Task();
+    // Virtual Destructor
+    virtual ~Task() {}
 
-    // Override pure virtual function from BaseTask
-    void displayTaskDetails() const override;
-    void completeTask() override;
-    string getTitle() const override;
-    string getDeadline() const override;
+    // Getters
+    string getTitle() const { return title; }
+    string getDescription() const { return description; }
+    string getDeadline() const { return deadline; }
+    bool getCompletionStatus() const { return isCompleted; }
 
-    static int getTotalTasks();
-    static int getCompletedTasks();
-    static void getTaskStats();
+    // Setters
+    virtual void setTitle(const string& t) { title = t; }
+    virtual void setDescription(const string& d) { description = d; }
+    virtual void setDeadline(const string& dl) { deadline = dl; }
+    virtual void completeTask() { isCompleted = true; }
+
+    // Display Task Details
+    virtual void displayTaskDetails() const {
+        cout << "Title: " << title << endl;
+        cout << "Description: " << description << endl;
+        cout << "Deadline: " << deadline << endl;
+        cout << "Status: " << (isCompleted ? "Completed" : "Incomplete") << endl;
+    }
 };
 
 #endif
