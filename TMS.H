@@ -1,20 +1,30 @@
 #ifndef TMS_H
 #define TMS_H
 
-#include "Task.h"
 #include <vector>
-using namespace std;
+#include "BaseTask.h"
 
 class TMS {
 private:
-    vector<Task*> tasks;
+    vector<BaseTask*> tasks;
 
 public:
-    void addTask(Task* task);
-    void viewTasks() const;
-    void sortTasksByDeadline();
-    void completeTaskByTitle(const string& title);
-    ~TMS();
+    ~TMS() {
+        for (auto task : tasks) {
+            delete task;
+        }
+    }
+
+    void addTask(BaseTask* task) {
+        tasks.push_back(task);
+    }
+
+    void viewTasks() const {
+        for (const auto& task : tasks) {
+            task->displayTaskDetails();
+            cout << "----------------------" << endl;
+        }
+    }
 };
 
 #endif
