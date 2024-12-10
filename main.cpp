@@ -1,33 +1,23 @@
-#include "TMS.h"
-#include "TaskStats.h"
-#include <iostream>
-
-using namespace std;
+#include "PriorityTask.h"
 
 int main() {
-    TMS* tms = new TMS();
+    // Default Priority Task
+    PriorityTask pt1;
+    pt1.setTitle("Finish Assignment");
+    pt1.setDescription("Complete the math assignment");
+    pt1.setDeadline("2024-08-20");
+    pt1.setPriorityLevel(1);
+    pt1.displayTaskDetails();
 
-    Task* task1 = new Task("Finish Assignment", "Complete the math assignment", "2024-08-20");
-    Task* task2 = new Task("Buy Groceries", "Buy vegetables and fruits", "2024-08-17");
-    Task* task3 = new Task("Workout", "Do 30 minutes of exercise", "2024-08-18");
+    cout << "----------------------" << endl;
 
-    tms->addTask(task1);
-    tms->addTask(task2);
-    tms->addTask(task3);
+    PriorityTask pt2("Buy Groceries", "Buy vegetables and fruits", "2024-08-17", 2);
+    pt2.displayTaskDetails();
 
-    cout << "Tasks before sorting:" << endl;
-    tms->viewTasks();
+    cout << "----------------------" << endl;
 
-    tms->sortTasksByDeadline();
-    cout << "Tasks after sorting by deadline:" << endl;
-    tms->viewTasks();
+    PriorityTask pt3("Workout", "Do 30 minutes of exercise", "2024-08-18", 5); // Invalid priority
+    pt3.displayTaskDetails();
 
-    tms->completeTaskByTitle("Workout");
-    cout << "Tasks after completing 'Workout':" << endl;
-    tms->viewTasks();
-
-    TaskStats::displayTaskStats();
-
-    delete tms;
     return 0;
 }

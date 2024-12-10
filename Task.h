@@ -1,12 +1,12 @@
 #ifndef TASK_H
 #define TASK_H
 
-#include <string>
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Task {
-private:
+protected:
     string title;
     string description;
     string deadline;
@@ -14,25 +14,34 @@ private:
 
 public:
     // Default Constructor
-    Task();
+    Task() : title(""), description(""), deadline(""), isCompleted(false) {}
 
     // Parameterized Constructor
-    Task(string t, string d, string dl);
+    Task(const string& t, const string& d, const string& dl)
+        : title(t), description(d), deadline(dl), isCompleted(false) {}
 
-    // Destructor
-    ~Task();
+    // Virtual Destructor
+    virtual ~Task() {}
 
-    // Member Functions
-    void completeTask();
-    void displayTaskDetails() const;
-    string getTitle() const;
-    string getDeadline() const;
-    bool isTaskCompleted() const;
+    // Getters
+    string getTitle() const { return title; }
+    string getDescription() const { return description; }
+    string getDeadline() const { return deadline; }
+    bool getCompletionStatus() const { return isCompleted; }
 
     // Setters
-    void setTitle(const string& newTitle);
-    void setDescription(const string& newDescription);
-    void setDeadline(const string& newDeadline);
+    virtual void setTitle(const string& t) { title = t; }
+    virtual void setDescription(const string& d) { description = d; }
+    virtual void setDeadline(const string& dl) { deadline = dl; }
+    virtual void completeTask() { isCompleted = true; }
+
+    // Display Task Details
+    virtual void displayTaskDetails() const {
+        cout << "Title: " << title << endl;
+        cout << "Description: " << description << endl;
+        cout << "Deadline: " << deadline << endl;
+        cout << "Status: " << (isCompleted ? "Completed" : "Incomplete") << endl;
+    }
 };
 
 #endif

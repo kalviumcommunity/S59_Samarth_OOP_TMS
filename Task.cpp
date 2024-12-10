@@ -12,11 +12,6 @@ Task::~Task() {
     cout << "Task deleted: " << title << endl;
 }
 
-void Task::completeTask() {
-    if (!isCompleted) {
-        isCompleted = true;
-    }
-}
 
 void Task::displayTaskDetails() const {
     cout << "Title: " << title << "\nDescription: " << description
