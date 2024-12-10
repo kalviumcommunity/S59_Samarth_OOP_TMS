@@ -1,28 +1,20 @@
 #include "Task.h"
 
-int Task::totalTasks = 0;
-int Task::completedTasks = 0;
-
 // Default Constructor
-Task::Task() : title(""), description(""), deadline(""), isCompleted(false) {
-    totalTasks++;
-}
+Task::Task() : title(""), description(""), deadline(""), isCompleted(false) {}
 
 // Parameterized Constructor
 Task::Task(string t, string d, string dl)
-    : title(t), description(d), deadline(dl), isCompleted(false) {
-    totalTasks++;
-}
+    : title(t), description(d), deadline(dl), isCompleted(false) {}
 
 // Destructor
 Task::~Task() {
-    cout << "Destructor called for task: " << title << endl;
+    cout << "Task deleted: " << title << endl;
 }
 
 void Task::completeTask() {
     if (!isCompleted) {
         isCompleted = true;
-        completedTasks++;
     }
 }
 
@@ -40,15 +32,18 @@ string Task::getDeadline() const {
     return deadline;
 }
 
-int Task::getTotalTasks() {
-    return totalTasks;
+bool Task::isTaskCompleted() const {
+    return isCompleted;
 }
 
-int Task::getCompletedTasks() {
-    return completedTasks;
+void Task::setTitle(const string& newTitle) {
+    title = newTitle;
 }
 
-void Task::getTaskStats() {
-    cout << "Total tasks: " << totalTasks << endl;
-    cout << "Completed tasks: " << completedTasks << endl;
+void Task::setDescription(const string& newDescription) {
+    description = newDescription;
+}
+
+void Task::setDeadline(const string& newDeadline) {
+    deadline = newDeadline;
 }

@@ -1,30 +1,33 @@
 #include "TMS.h"
+#include "TaskStats.h"
 #include <algorithm>
 #include <iostream>
 
 using namespace std;
 
-void TMS::addTask(BaseTask* task) {
+void TMS::addTask(Task* task) {
     tasks.push_back(task);
+    TaskStats::incrementTotalTasks(); // Update stats
 }
 
 void TMS::viewTasks() const {
     for (const auto& task : tasks) {
-        task->displayTaskDetails(); // Calls the overridden method
+        task->displayTaskDetails();
         cout << "----------------------" << endl;
     }
 }
 
 void TMS::sortTasksByDeadline() {
-    sort(tasks.begin(), tasks.end(), [](const BaseTask* a, const BaseTask* b) {
-        return a->getDeadline() < b->getDeadline(); // Now using getDeadline() from derived class
+    sort(tasks.begin(), tasks.end(), [](const Task* a, const Task* b) {
+        return a->getDeadline() < b->getDeadline();
     });
 }
 
 void TMS::completeTaskByTitle(const string& title) {
     for (auto& task : tasks) {
         if (task->getTitle() == title) {
-            task->completeTask();  // Calls the overridden method
+            task->completeTask();
+            TaskStats::incrementCompletedTasks(); // Update stats
             cout << "Task \"" << title << "\" marked as completed." << endl;
             return;
         }

@@ -1,19 +1,16 @@
 #ifndef TASK_H
 #define TASK_H
 
-#include "BaseTask.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
-class Task : public BaseTask {
+class Task {
 private:
     string title;
     string description;
     string deadline;
     bool isCompleted;
-
-    static int totalTasks;
-    static int completedTasks;
 
 public:
     // Default Constructor
@@ -23,17 +20,19 @@ public:
     Task(string t, string d, string dl);
 
     // Destructor
-    virtual ~Task();
+    ~Task();
 
-    // Override pure virtual function from BaseTask
-    void displayTaskDetails() const override;
-    void completeTask() override;
-    string getTitle() const override;
-    string getDeadline() const override;
+    // Member Functions
+    void completeTask();
+    void displayTaskDetails() const;
+    string getTitle() const;
+    string getDeadline() const;
+    bool isTaskCompleted() const;
 
-    static int getTotalTasks();
-    static int getCompletedTasks();
-    static void getTaskStats();
+    // Setters
+    void setTitle(const string& newTitle);
+    void setDescription(const string& newDescription);
+    void setDeadline(const string& newDeadline);
 };
 
 #endif
