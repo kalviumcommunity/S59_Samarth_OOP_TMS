@@ -5,38 +5,61 @@
 
 using namespace std;
 
-void TMS::addTask(Task* task) {
-    tasks.push_back(task);
-    TaskStats::incrementTotalTasks(); // Update stats
+void TMS::addTask(BaseTask* task) {
+    if (task != nullptr) {  
+        tasks.push_back(task);
+        TaskStats::incrementTotalTasks();  
+    } else {
+        cout << "Error: Attempted to add a null task." << endl;
+    }
 }
 
 void TMS::viewTasks() const {
-    for (const auto& task : tasks) {
-        task->displayTaskDetails();
-        cout << "----------------------" << endl;
+    if (tasks.empty()) {
+        cout << "No tasks to display." << endl;
+        return;
     }
-}
 
-void TMS::sortTasksByDeadline() {
-    sort(tasks.begin(), tasks.end(), [](const Task* a, const Task* b) {
-        return a->getDeadline() < b->getDeadline();
-    });
-}
-
-void TMS::completeTaskByTitle(const string& title) {
-    for (auto& task : tasks) {
-        if (task->getTitle() == title) {
-            task->completeTask();
-            TaskStats::incrementCompletedTasks(); // Update stats
-            cout << "Task \"" << title << "\" marked as completed." << endl;
-            return;
+    for (const auto& task : tasks) {
+        if (task != nullptr) {
+            task->displayTaskDetails();  
+            cout << "----------------------" << endl;
+        } else {
+            cout << "Error: Null task encountered." << endl;
         }
     }
-    cout << "Task \"" << title << "\" not found." << endl;
+}
+
+
+void TMS::completeTaskByTitle(const string& title) {
+    bool taskFound = false;
+    for (auto& task : tasks) {
+        if (task == nullptr) {
+            continue;  
+        }
+        if (task->getTitle() == title) {
+            if (!task->isCompleted()) {
+                task->completeTask();
+                TaskStats::incrementCompletedTasks();  // Update stats
+                cout << "Task \"" << title << "\" marked as completed." << endl;
+            } else {
+                cout << "Task \"" << title << "\" is already completed." << endl;
+            }
+            taskFound = true;
+            break;
+        }
+    }
+
+    if (!taskFound) {
+        cout << "Task \"" << title << "\" not found." << endl;
+    }
 }
 
 TMS::~TMS() {
+    
     for (auto task : tasks) {
-        delete task;
+        delete task; 
     }
+    tasks.clear();  
+    cout << "All tasks have been deleted, and memory is cleaned up." << endl;
 }

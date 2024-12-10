@@ -2,37 +2,39 @@
 #define TASK_H
 
 #include "BaseTask.h"
+#include <iostream>
 
-class Task : public BaseTask {
-protected:
+class Task : public BaseTask
+{
+private:
     string title;
     string description;
     string deadline;
+    bool completed;
 
 public:
-    // Default Constructor
-    Task() : title(""), description(""), deadline("") {}
+    Task() : title(""), description(""), deadline(""), completed(false) {}
 
-    // Parameterized Constructor
-    Task(const string& t, const string& d, const string& dl)
-        : title(t), description(d), deadline(dl) {}
+    Task(string t, string d, string dl) : title(t), description(d), deadline(dl), completed(false) {}
 
-    // Getters and Setters
+    void displayTaskDetails() const override
+    {
+        cout << "Title: " << title << "\nDescription: " << description
+             << "\nDeadline: " << deadline << "\nStatus: "
+             << (completed ? "Completed" : "Incomplete") << endl;
+    }
+
     string getTitle() const override { return title; }
-    void setTitle(const string& t) override { title = t; }
 
-    string getDescription() const { return description; }
-    void setDescription(const string& d) { description = d; }
+    void setTitle(const string &newTitle) override { this->title = newTitle; }
+
+    bool isCompleted() const override { return completed; }
+
+    void completeTask() override { completed = true; }
 
     string getDeadline() const { return deadline; }
-    void setDeadline(const string& dl) { deadline = dl; }
 
-    // Overridable Method
-    void displayTaskDetails() const override {
-        cout << "Title: " << title << endl;
-        cout << "Description: " << description << endl;
-        cout << "Deadline: " << deadline << endl;
-    }
+    void setDeadline(const string &newDeadline) { deadline = newDeadline; }
 };
 
 #endif
